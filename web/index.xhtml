@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Home Page</title>
+    </h:head>
+    <h:body>
+         <h:form>
+            <h3>Enter Student Details:</h3> <br/>
+            <h:outputLabel for="txtId">
+                <h:outputText value="Enter Student Id" />
+            </h:outputLabel>
+            <h:inputText id="txtId" value="#{studentCtrl.std.stdId}"/>
+            <br/>
+            <h:outputLabel for="txtName">
+                <h:outputText value="Enter Student Name" />
+            </h:outputLabel>
+            <h:inputText id="txtName" value="#{studentCtrl.std.stdName}"/>
+            <br/>
+            <h:outputLabel for="txtLocation">
+                <h:outputText value="Enter Student Location" />
+            </h:outputLabel>
+            <h:inputText id="txtLocation" value="#{studentCtrl.std.stdLocation}"/>
+            <br/>
+            <h:commandButton value="Add Student" action="#{studentCtrl.displayAll()}" />
+        </h:form>
+          
+        <br/> <br/> <br/>
+        <h3>List of Students</h3> 
+        <br/> <br/>
+        <h:form>
+            <h:dataTable var="std" value="#{studentCtrl.displayAll()}" border="2" cellpadding="2" cellspacing="2">
+                <h:column>
+                    <f:facet name="header">Student Id</f:facet>
+                    <h:outputText value="${std.stdId}"></h:outputText>
+                </h:column> 
+                <h:column>
+                    <f:facet name="header">Student Name</f:facet>
+                    <h:outputText value="${std.stdName}"></h:outputText>
+                </h:column> 
+                <h:column>
+                    <f:facet name="header">Student Location</f:facet>
+                    <h:outputText value="${std.stdLocation}"></h:outputText>
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
